@@ -30,9 +30,7 @@ export default function Navbar() {
       </ul>
       
       <div className="flex space-x-4 items-center">
-        <button className="p-2 rounded-full hover:bg-gray-700">
-          <IoSunnyOutline size={24} />
-        </button>
+        
       </div>
     </nav>
   );
