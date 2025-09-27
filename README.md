@@ -1,2 +1,2 @@
 Welcome to my Github page :)
-Link : https://sblaker.github.io/portfolio/
+Link : https://sblaker.github.io
