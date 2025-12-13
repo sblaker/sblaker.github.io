@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect } from 'react';
 import HeroSection from "./components/HeroSection";
 import ContentCard from "./components/ContentCard";
 import BioSection from "./components/BioSection";
@@ -9,8 +12,48 @@ import {
 } from "react-icons/io5";
 import Link from "next/link";
 
-
 export default function Home() {
+
+  useEffect(() => {
+    const sendNotification = async () => {
+      // 1. Leggiamo le variabili con il prefisso NEXT_PUBLIC_
+      const token = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+      const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+
+      if (!token || !chatId) {
+        console.error("Mancano i token di Telegram!");
+        return;
+      }
+
+      const hasNotified = sessionStorage.getItem('visit_notified');
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+      if (!hasNotified && !isLocal) {
+        const message = `🚀 *Nuova visita su GitHub Pages!*`;
+
+        try {
+          // 2. Chiamiamo DIRETTAMENTE Telegram da qui
+          await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: message,
+              parse_mode: 'Markdown',
+            }),
+          });
+          
+          sessionStorage.setItem('visit_notified', 'true');
+          console.log('Notifica inviata a Telegram');
+        } catch (error) {
+          console.error('Errore Telegram:', error);
+        }
+      }
+    };
+
+    sendNotification();
+  }, []);
+
   return (
     <div className="text-gray-300 font-sans p-6">
       <div className="container mx-auto relative z-10">
@@ -24,7 +67,7 @@ export default function Home() {
             </div>
             <div className="w-full lg:w-2/3 flex flex-col gap-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* ... codice precedente */}
+                
                 <Link href="/portfolio" passHref>
                   <ContentCard
                     title="Portfolio"
@@ -33,7 +76,7 @@ export default function Home() {
                       size={48}
                       className="text-[#00C2E8]" />} id={undefined}                  />
                 </Link>
-                {/* ... codice successivo */}
+                
                 <ContentCard
                   id="cv"
                   title="Curriculum Vitae"
