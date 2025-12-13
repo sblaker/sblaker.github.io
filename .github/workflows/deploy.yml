@@ -36,8 +36,13 @@ jobs:
       - name: Install dependencies # Installa le dipendenze del progetto
         run: npm ci
 
+      # --- QUESTA È LA PARTE MODIFICATA ---
       - name: Build with Next.js # Esegue il build del sito
+        env:
+            NEXT_PUBLIC_TELEGRAM_BOT_TOKEN: ${{ secrets.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN }}
+            NEXT_PUBLIC_TELEGRAM_CHAT_ID: ${{ secrets.NEXT_PUBLIC_TELEGRAM_CHAT_ID }}
         run: npm run build
+      # ------------------------------------
 
       - name: Upload artifact # Carica i file del sito costruito per il deploy
         uses: actions/upload-pages-artifact@v3
