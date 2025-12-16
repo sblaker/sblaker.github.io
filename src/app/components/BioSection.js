@@ -6,8 +6,7 @@ export default function BioSection() {
       </h2>
       <p className="text-gray-400 mb-4">
         I am Antonino Trifirò, a future cybersecurity engineer with a solid
-        academic background and a strong passion for the challenges of the
-        digital world.
+        academic background and a strong passion for the Cybersecurity field.
       </p>
       <p className="text-gray-400 mb-4">
         I earned my Bachelor&apos;s degree in Computer Engineering (L-8) at the
@@ -16,26 +15,16 @@ export default function BioSection() {
       </p>
       <div className="mt-6">
         <h3 className="text-xl font-bold text-white mb-2">
-          Skills and Interests
+          Skills and Interests:
         </h3>
         <ul className="list-disc list-inside space-y-1 text-gray-400">
           <li>
-            Programming languages: C, Java, JavaScript, Python, TypeScript, C++,
-            and Bash.
+            Programming languages:Java, JavaScript, Python and Bash.
           </li>
-          <li>
-            Web technologies: React, Next.js, Tailwind CSS, Node.js, and
-            Wordpress. This website was built using React and Next.js.
-          </li>
-          <li>IoT and embedded systems: ESP32, ESP8266, Arduino</li>
+          <li>3D Printing</li>
           <li>
             Participation in CyberChallenge.IT and Hack The Box challenges,
             focusing on CTFs, reverse engineering, and web security.
-          </li>
-          <li>
-            My curiosity embraces the entire spectrum of cybersecurity, from
-            malware analysis to network defense and machine learning
-            applications for security.
           </li>
         </ul>
       </div>
