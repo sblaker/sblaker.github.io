@@ -2,7 +2,7 @@ export default function BioSection() {
   return (
     <div className="bg-[#1C1C1C] p-6 rounded-3xl shadow-lg relative">
       <h2 className="text-2xl font-bold text-white mb-4">
-        A Journey into Digital Security
+        Formation and Background
       </h2>
       <p className="text-gray-400 mb-4">
         I am Antonino Trifirò, a future cybersecurity engineer with a solid
