@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="flex flex-col space-y-4">
         <div className="flex items-center space-x-2 text-gray-400">
           <span className="text-sm font-semibold uppercase">
-            Future Cybersecurity Engineer
+            Cybersecurity Enthusiast
           </span>
         </div>
         <h1 className="text-4xl font-bold text-white">Antonino Trifirò</h1>
