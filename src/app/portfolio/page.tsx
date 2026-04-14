@@ -7,9 +7,9 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-transparent text-white p-8">
       <header className="flex justify-between items-center mb-10">
-        <h1 className="text-3xl font-bold">Il Mio Portfolio</h1>
+        <h1 className="text-3xl font-bold">My Portfolio</h1>
         <Link href="/" className="text-[#00C2E8] hover:text-cyan-400 transition-colors duration-300">
-          ← Torna alla Home
+          ← Back to Home
         </Link>
       </header>
 

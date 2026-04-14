@@ -30,7 +30,7 @@ export const myProjects: Project[] = [
       "Network Security",
     ],
     imageUrl: "/images/projects/ids.png",
-    githubUrl: "#", // ACTION: Replace with your actual repo link
+    githubUrl: undefined,
   },
   {
     slug: "esp32-iot-digital-frame",
@@ -48,8 +48,8 @@ export const myProjects: Project[] = [
       "NASA API",
     ],
     imageUrl: "/images/projects/cyd.jpg",
-    githubUrl: "https://github.com/sblaker/sblaker.github.io",
-    liveDemoUrl: "https://sblaker.github.io/",
+    githubUrl: undefined,
+    liveDemoUrl: undefined,
   },
   {
     slug: "cyberchallenge-it-ctf",
@@ -67,7 +67,7 @@ export const myProjects: Project[] = [
       "Teamwork",
     ],
     imageUrl: "/images/projects/cyberchallenge.jpeg",
-    githubUrl: "#", // Use "#" or undefined if there is no repository
+    githubUrl: undefined,
     liveDemoUrl: "https://www.cyberchallenge.it/",
   },
 ];

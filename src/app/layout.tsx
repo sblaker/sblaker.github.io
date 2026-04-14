@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Un portfolio per un ingegnere della cybersecurity",
+  title: "Antonino Trifirò | Cybersecurity Engineer",
+  description: "Portfolio of Antonino Trifirò, Computer Engineering student specializing in Cybersecurity.",
 };
 
 export default function RootLayout({

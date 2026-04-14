@@ -22,8 +22,8 @@ export default function ProjectCard({
         <Image
           src={imageUrl}
           alt={`Preview image for project ${title}`}
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
         />
       </div>
 

@@ -16,37 +16,23 @@ export default function Home() {
 
   useEffect(() => {
     const sendNotification = async () => {
-      // 1. Leggiamo le variabili con il prefisso NEXT_PUBLIC_
-      const token = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
-      const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+      // Il token Telegram non è mai esposto nel bundle:
+      // la chiamata passa per il Cloudflare Worker in cloudflare-worker/worker.js
+      // Imposta NEXT_PUBLIC_NOTIFICATION_WORKER_URL nel tuo .env.local
+      // e nei GitHub Actions secrets.
+      const workerUrl = process.env.NEXT_PUBLIC_NOTIFICATION_WORKER_URL;
 
-      if (!token || !chatId) {
-        console.error("Mancano i token di Telegram!");
-        return;
-      }
+      if (!workerUrl) return;
 
       const hasNotified = sessionStorage.getItem('visit_notified');
       const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
       if (!hasNotified && !isLocal) {
-        const message = `🚀 *Nuova visita su GitHub Pages!*`;
-
         try {
-          // 2. Chiamiamo DIRETTAMENTE Telegram da qui
-          await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: message,
-              parse_mode: 'Markdown',
-            }),
-          });
-          
+          await fetch(workerUrl, { method: 'POST' });
           sessionStorage.setItem('visit_notified', 'true');
-          console.log('Notifica inviata a Telegram');
-        } catch (error) {
-          console.error('Errore Telegram:', error);
+        } catch {
+          // Notifica non critica: ignoriamo silenziosamente gli errori
         }
       }
     };
@@ -72,9 +58,8 @@ export default function Home() {
                   <ContentCard
                     title="Portfolio"
                     description="My projects and works"
-                    icon={<IoBriefcaseOutline
-                      size={48}
-                      className="text-[#00C2E8]" />} id={undefined}                  />
+                    icon={<IoBriefcaseOutline size={48} className="text-[#00C2E8]" />}
+                  />
                 </Link>
                 
                 <ContentCard
