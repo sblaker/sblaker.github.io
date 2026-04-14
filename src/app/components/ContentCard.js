@@ -1,3 +1,6 @@
+/**
+ * @param {{ id?: string, title: string, description: string, icon: import('react').ReactNode }} props
+ */
 export default function ContentCard({ id, title, description, icon }) {
   return (
     <div id={id} className="bg-[#1C1C1C] p-8 rounded-3xl shadow-lg relative h-64 flex flex-col justify-between">
