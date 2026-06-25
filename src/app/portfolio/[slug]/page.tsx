@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { IoLogoGithub } from "react-icons/io5";
-import { myProjects, Project } from "../../../data/projects";
+import { myProjects, Project, ProjectSection } from "../../../data/projects";
 import type { Metadata } from "next";
 
 // ✅ Tipi aggiornati per Next.js 15
@@ -91,9 +91,24 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
           </div>
         )}
 
-        <p className="text-gray-400 mb-6">{project.fullDescription}</p>
+        <div className="mb-6 space-y-6">
+          {project.sections.map((section: ProjectSection) => (
+            <div key={section.title}>
+              <h3 className="text-lg font-semibold text-white mb-2">{section.title}</h3>
+              {Array.isArray(section.content) ? (
+                <ul className="list-disc list-inside space-y-1">
+                  {section.content.map((item: string) => (
+                    <li key={item} className="text-gray-400">{item}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-gray-400">{section.content}</p>
+              )}
+            </div>
+          ))}
+        </div>
 
-        <h3 className="text-xl font-semibold mt-6 mb-2">Technologies used:</h3>
+        <h3 className="text-xl font-semibold mt-6 mb-2">Tecnologie utilizzate:</h3>
         <div className="flex flex-wrap gap-2 text-sm text-gray-500 mb-4">
           {project.technologies.map((tech) => (
             <span
