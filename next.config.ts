@@ -2,6 +2,7 @@
 
 const nextConfig = {
   output: "export",
+  trailingSlash: true,
   // basePath e assetPrefix non sono necessari per un repository
   // del tipo <username>.github.io
   // basePath: '/sblaker.github.io', // <-- RIMUOVI O COMMENTA QUESTA RIGA
