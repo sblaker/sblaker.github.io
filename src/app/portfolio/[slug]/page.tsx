@@ -75,7 +75,7 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
           href="/portfolio"
           className="text-[#00C2E8] hover:text-cyan-400 transition-colors duration-300"
         >
-          ← Back to Portfolio
+          ← Torna al Portfolio
         </Link>
       </header>
 

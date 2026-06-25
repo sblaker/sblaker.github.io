@@ -7,9 +7,9 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-transparent text-white p-8">
       <header className="flex justify-between items-center mb-10">
-        <h1 className="text-3xl font-bold">My Portfolio</h1>
+        <h1 className="text-3xl font-bold">I miei Progetti</h1>
         <Link href="/" className="text-[#00C2E8] hover:text-cyan-400 transition-colors duration-300">
-          ← Back to Home
+          ← Torna alla Home
         </Link>
       </header>
 
@@ -17,11 +17,11 @@ export default function PortfolioPage() {
         {myProjects.map((project) => (
           <Link href={`/portfolio/${project.slug}`} key={project.slug}>
             <div className="h-full">
-              <ProjectCard 
+              <ProjectCard
                 title={project.title}
                 description={project.description}
                 technologies={project.technologies}
-                imageUrl={project.imageUrl} // <-- Ecco la riga che passa l'URL dell'immagine
+                imageUrl={project.imageUrl}
               />
             </div>
           </Link>

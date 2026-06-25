@@ -2,33 +2,59 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { IoMenuOutline, IoCloseOutline } from 'react-icons/io5';
+import { usePathname } from 'next/navigation';
+import { IoMenuOutline, IoCloseOutline, IoDocumentTextOutline } from 'react-icons/io5';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Bio', href: '/#bio' },
+    { name: 'Chi Sono', href: '/#bio' },
     { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Links', href: '/#links' },
+    { name: 'Contatti', href: '/#links' },
   ];
 
-  return (
-    <nav className="relative z-50 bg-[#121212] text-gray-200 rounded-full">
-      <div className="flex justify-between items-center px-4 py-3">
-        <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center shadow-lg">
-          <span className="text-xl font-bold text-white">A</span>
-        </div>
+  const isActive = (href) => {
+    if (href === '/portfolio') return pathname.startsWith('/portfolio');
+    return false;
+  };
 
-        <ul className="hidden md:flex space-x-6">
+  return (
+    <nav className="relative z-50 bg-[#121212]/90 backdrop-blur-md text-gray-200 rounded-full border border-[#00C2E8]/20 shadow-lg shadow-[#00C2E8]/5">
+      <div className="flex justify-between items-center px-4 py-3">
+
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-[#00C2E8]/10 border border-[#00C2E8]/30 group-hover:bg-[#00C2E8]/20 transition-colors">
+            <span className="text-sm font-bold text-[#00C2E8]">AT</span>
+          </div>
+        </Link>
+
+        <ul className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (
             <li key={item.name}>
-              <Link href={item.href} className="hover:text-[#00C2E8] transition-colors">
+              <Link
+                href={item.href}
+                className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
+                  isActive(item.href)
+                    ? 'text-[#00C2E8] bg-[#00C2E8]/10'
+                    : 'hover:text-[#00C2E8] hover:bg-[#00C2E8]/10'
+                }`}
+              >
                 {item.name}
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              href="/cv-antonino-trifiro.pdf"
+              download
+              className="ml-2 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm bg-[#00C2E8]/10 border border-[#00C2E8]/30 text-[#00C2E8] hover:bg-[#00C2E8]/20 transition-all duration-200"
+            >
+              <IoDocumentTextOutline size={15} />
+              CV
+            </a>
+          </li>
         </ul>
 
         <button
@@ -41,7 +67,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <ul className="md:hidden flex flex-col items-center gap-4 pb-4">
+        <ul className="md:hidden flex flex-col items-center gap-3 pb-4">
           {navItems.map((item) => (
             <li key={item.name}>
               <Link
@@ -53,6 +79,17 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              href="/cv-antonino-trifiro.pdf"
+              download
+              className="flex items-center gap-1.5 text-[#00C2E8] hover:underline"
+              onClick={() => setIsOpen(false)}
+            >
+              <IoDocumentTextOutline size={15} />
+              CV
+            </a>
+          </li>
         </ul>
       )}
     </nav>

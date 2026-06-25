@@ -16,27 +16,19 @@ export default function Home() {
 
   useEffect(() => {
     const sendNotification = async () => {
-      // Il token Telegram non è mai esposto nel bundle:
-      // la chiamata passa per il Cloudflare Worker in cloudflare-worker/worker.js
-      // Imposta NEXT_PUBLIC_NOTIFICATION_WORKER_URL nel tuo .env.local
-      // e nei GitHub Actions secrets.
       const workerUrl = process.env.NEXT_PUBLIC_NOTIFICATION_WORKER_URL;
-
       if (!workerUrl) return;
-
       const hasNotified = sessionStorage.getItem('visit_notified');
       const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
       if (!hasNotified && !isLocal) {
         try {
           await fetch(workerUrl, { method: 'POST' });
           sessionStorage.setItem('visit_notified', 'true');
         } catch {
-          // Notifica non critica: ignoriamo silenziosamente gli errori
+          // notifica non critica
         }
       }
     };
-
     sendNotification();
   }, []);
 
@@ -53,34 +45,30 @@ export default function Home() {
             </div>
             <div className="w-full lg:w-2/3 flex flex-col gap-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
+
                 <Link href="/portfolio" passHref>
                   <ContentCard
                     title="Portfolio"
-                    description="My projects and works"
+                    description="I miei progetti"
                     icon={<IoBriefcaseOutline size={48} className="text-[#00C2E8]" />}
                   />
                 </Link>
-                
+
                 <ContentCard
                   id="cv"
                   title="Curriculum Vitae"
-                  description="Download my CV"
+                  description="Scarica il mio CV"
                   icon={
-                    <div className="flex space-x-4">
-                      <a href="cv-antonino-trifiro.pdf" download>
-                        <IoDocumentTextOutline
-                          size={48}
-                          className="text-[#00C2E8]"
-                        />
-                      </a>
-                    </div>
+                    <a href="cv-antonino-trifiro.pdf" download>
+                      <IoDocumentTextOutline size={48} className="text-[#00C2E8]" />
+                    </a>
                   }
                 />
+
                 <ContentCard
                   id="links"
-                  title="Links"
-                  description="Connect with me"
+                  title="Contatti"
+                  description="Connettiti con me"
                   icon={
                     <div className="flex space-x-4">
                       <a
@@ -100,6 +88,7 @@ export default function Home() {
                     </div>
                   }
                 />
+
               </div>
             </div>
           </div>
