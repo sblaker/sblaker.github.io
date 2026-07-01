@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     google: "google8d8c25c91d303331",
   },
   icons: {
-    icon: "/favicon.ico?v=1",
+    icon: "/favicon.ico?v=2",
   },
 };
 
