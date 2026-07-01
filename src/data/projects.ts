@@ -26,24 +26,24 @@ export const myProjects: Project[] = [
       {
         title: "Perché l'ho costruito",
         content:
-          "Volevo lavorare in un SOC ma le soluzioni SIEM enterprise costano migliaia di euro. Ho preso Wazuh — open source — e ho costruito tutto da zero: ambiente di lab, VM, regole di detection custom e simulazioni di attacco reali. Volevo capire come funziona davvero un SIEM dall'interno, non solo studiarlo in teoria.",
+          "Volevo lavorare in un SOC ma le soluzioni SIEM enterprise costano migliaia di euro. Ho preso Wazuh (open source) e ho costruito tutto da zero: ambiente di lab, VM, regole di detection custom e simulazioni di attacco reali. Volevo capire come funziona davvero un SIEM dall'interno, non solo studiarlo in teoria.",
       },
       {
         title: "Cosa voglio dimostrare",
         content:
-          "Che anche senza esperienza professionale in un SOC sono in grado di costruire e gestire un ambiente di detection realistico in autonomia — dalla configurazione del SIEM alla scrittura di regole custom fino al triage degli alert. Questo progetto collega il lavoro teorico della mia tesi sull'IDS basato su ML con la pratica operativa reale.",
+          "Che anche senza esperienza professionale in un SOC sono in grado di costruire e gestire un ambiente di detection realistico in autonomia, dalla configurazione del SIEM alla scrittura di regole custom fino al triage degli alert. Questo progetto collega il lavoro teorico della mia tesi sull'IDS basato su ML con la pratica operativa reale.",
       },
       {
         title: "Cosa ho imparato",
         content: [
           "Configurare e gestire un SIEM reale (Wazuh) da zero",
-          "Come gli attacchi si manifestano concretamente negli alert — log, eventi Sysmon, regole di detection",
+          "Come gli attacchi si manifestano concretamente negli alert: log, eventi Sysmon, regole di detection",
           "Scrivere regole XML custom mappate su MITRE ATT&CK",
           "La differenza tra rilevare un attacco in teoria (ML) e farlo con regole deterministiche su un SIEM",
           "Triage degli alert: identificare i veri positivi, raccogliere il contesto, documentare i risultati",
           "Telemetria endpoint con Sysmon (Event ID: process create, connessioni di rete, registry)",
           "Automatizzare il provisioning di una VM Windows (Agent + Sysmon, zero click)",
-          "Simulato e documentato casi studio reali: SSH Brute Force (T1110.001), Ransomware con Shadow Copy Deletion (T1490), Mimikatz e LSASS Credential Dumping (T1003.001) — osservando gli alert live sul dashboard Wazuh",
+          "Simulato e documentato casi studio reali: SSH Brute Force (T1110.001), Ransomware con Shadow Copy Deletion (T1490), Mimikatz e LSASS Credential Dumping (T1003.001), osservando gli alert live sul dashboard Wazuh",
         ],
       },
     ],
@@ -154,7 +154,7 @@ export const myProjects: Project[] = [
       {
         title: "Cosa voglio dimostrare",
         content:
-          "Che ho una base solida nelle discipline pratiche della cybersecurity — non solo la teoria, ma la capacità di applicarla sotto pressione e in team, su challenge reali di attacco e difesa.",
+          "Che ho una base solida nelle discipline pratiche della cybersecurity: non solo la teoria, ma la capacità di applicarla sotto pressione e in team, su challenge reali di attacco e difesa.",
       },
       {
         title: "Cosa ho imparato",

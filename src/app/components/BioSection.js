@@ -41,8 +41,8 @@ export default function BioSection() {
         <p className="text-gray-400 leading-relaxed">
           Sto cercando opportunità come <span className="text-white font-medium">SOC Analyst L1</span> o
           in ruoli Blue Team. Ho costruito questo portfolio per dimostrare
-          competenze pratiche — detection engineering, triage degli alert, simulazione
-          di attacchi reali — non solo teoriche.
+          competenze pratiche (detection engineering, triage degli alert, simulazione
+          di attacchi reali), non solo teoriche.
         </p>
       </div>
     </div>
