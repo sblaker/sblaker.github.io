@@ -57,6 +57,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://sblaker.github.io",
   },
+  verification: {
+    google: "google8d8c25c91d303331",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
