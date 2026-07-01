@@ -30,8 +30,29 @@ export async function generateMetadata(
   }
 
   return {
-    title: `Project | ${project.title}`,
+    title: `${project.title} | Antonino Trifirò`,
     description: project.description,
+    keywords: project.technologies,
+    openGraph: {
+      title: `${project.title} | Antonino Trifirò`,
+      description: project.description,
+      url: `https://sblaker.github.io/portfolio/${project.slug}`,
+      type: "article",
+      images: [
+        {
+          url: `https://sblaker.github.io${project.imageUrl}`,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.description,
+      images: [`https://sblaker.github.io${project.imageUrl}`],
+    },
   };
 }
 

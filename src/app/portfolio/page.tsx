@@ -2,6 +2,19 @@ import Link from 'next/link';
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { myProjects } from '../../data/projects';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Portfolio | Antonino Trifirò',
+  description: 'Portfolio projects of Antonino Trifirò. IDS for Zero-Day Detection, ESP32 IoT Digital Frame, CyberChallenge CTF, and SOC HomeLab projects.',
+  keywords: ['Portfolio', 'Projects', 'Cybersecurity', 'Machine Learning', 'IDS', 'IoT', 'CTF'],
+  openGraph: {
+    title: 'Portfolio | Antonino Trifirò',
+    description: 'Explore my cybersecurity and IoT projects.',
+    url: 'https://sblaker.github.io/portfolio/',
+    type: 'website',
+  },
+};
 
 export default function PortfolioPage() {
   return (

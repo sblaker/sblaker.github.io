@@ -17,25 +17,49 @@
  * 6. Aggiungilo anche ai GitHub Actions secrets se usi CI/CD
  */
 
+const ALLOWED_ORIGIN = "https://sblaker.github.io";
+
+function corsHeaders(origin) {
+  return {
+    "Access-Control-Allow-Origin": origin === ALLOWED_ORIGIN ? origin : "",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+}
+
 export default {
   async fetch(request, env) {
+    const origin = request.headers.get("Origin") || "";
+
+    // Gestisci preflight CORS
+    if (request.method === "OPTIONS") {
+      return new Response(null, { status: 204, headers: corsHeaders(origin) });
+    }
+
     // Permetti solo POST
     if (request.method !== "POST") {
-      return new Response("Method Not Allowed", { status: 405 });
+      return new Response("Method Not Allowed", {
+        status: 405,
+        headers: corsHeaders(origin),
+      });
     }
 
     // CORS: permetti solo il tuo dominio
-    const origin = request.headers.get("Origin") || "";
-    const allowed = ["https://sblaker.github.io"];
-    if (!allowed.includes(origin)) {
-      return new Response("Forbidden", { status: 403 });
+    if (origin !== ALLOWED_ORIGIN) {
+      return new Response("Forbidden", {
+        status: 403,
+        headers: corsHeaders(origin),
+      });
     }
 
     const token = env.TELEGRAM_BOT_TOKEN;
     const chatId = env.TELEGRAM_CHAT_ID;
 
     if (!token || !chatId) {
-      return new Response("Worker not configured", { status: 500 });
+      return new Response("Worker not configured", {
+        status: 500,
+        headers: corsHeaders(origin),
+      });
     }
 
     const message = `🚀 *Nuova visita su GitHub Pages!*`;
@@ -54,12 +78,15 @@ export default {
     );
 
     if (!telegramRes.ok) {
-      return new Response("Telegram error", { status: 502 });
+      return new Response("Telegram error", {
+        status: 502,
+        headers: corsHeaders(origin),
+      });
     }
 
     return new Response("OK", {
       status: 200,
-      headers: { "Access-Control-Allow-Origin": origin },
+      headers: corsHeaders(origin),
     });
   },
 };
